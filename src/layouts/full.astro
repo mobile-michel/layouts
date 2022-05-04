@@ -1,0 +1,22 @@
+---
+import Nav from '../components/mainNav.astro';
+let data = await Astro.glob('../pages/*.md');
+const {title} = Astro.props
+---
+
+    <header class="h-screen bg-[url('/assets/image1.jpg')] bg-cover bg-center">
+        <Nav title={title} />
+        <div class="flex justify-center items-center h-full">
+            <section class="bg-slate-100 p-5 border-2">
+                <p>flex justify-center items-center h-full</p>
+            </section>
+        </div>
+    </header>
+    <main class="">
+        <section class="prose-sm">
+            <slot />
+        </section>
+    </main>
+    <footer>
+        <p>footer</p>
+    </footer>

@@ -1,0 +1,37 @@
+---
+let data = await Astro.glob('../pages/*.md')
+const { content } = Astro.props
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{content.title}</title>
+</head>
+<body>
+    <header class="h-screen bg-[url('/assets/image1.jpg')] bg-cover bg-center">
+        <div class="prose"><h1>{content.title}</h1></div>
+        <nav>
+        <ul class="flex">{data.map((post) => (
+	    		<li class="p-2"><a href={post.url}>{post.frontmatter.title}</a></li>
+		    	))}
+		    </ul>
+        </nav>
+        <div class="flex justify-center items-center h-full">
+            <section class="bg-slate-100 p-5 border-2">
+                <p>flex justify-center items-center h-full</p>
+            </section>
+        </div>
+    </header>
+    <main class="">
+        <section class="prose-sm">
+            <slot />
+        </section>
+    </main>
+    <footer><p>footer</p>
+    </footer>
+</body>
+</html>
